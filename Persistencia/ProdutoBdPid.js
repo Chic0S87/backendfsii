@@ -16,6 +16,7 @@ export default class ProdutoBDPid {
                 produto.codigoCategoria,
             ];
             const resultado = await conexao.query(sql, valores);
+            conexao.release()
             return await resultado[0].insertId;
 
         }
@@ -37,6 +38,7 @@ export default class ProdutoBDPid {
             ];
 
             await conexao.query(sql, valores);
+            conexao.release()
         }
     }
 
@@ -50,6 +52,7 @@ export default class ProdutoBDPid {
             const valores = [produto.codigo]
 
             await conexao.query(sql, valores);
+            conexao.release()
         }
     }
 
@@ -76,6 +79,7 @@ export default class ProdutoBDPid {
             );
             listaProdutos.push(produto);
         }
+        conexao.release()
         return listaProdutos;
         // }
     }

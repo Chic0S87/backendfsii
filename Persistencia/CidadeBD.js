@@ -8,6 +8,7 @@ export default class CidadeBD {
       const sql = "INSERT INTO cidades(nome) VALUES (?) ";
       const values = [cidade.nome];
       const resultado = await conect.query(sql, values);
+      conexao.release()
       return await resultado[0].insertId;
     }
   }
@@ -18,6 +19,7 @@ export default class CidadeBD {
       const sql = "UPDATE cidades SET nome=? WHERE codigo=?";
       const values = [cidade.nome, cidade.codigo];
       await conect.query(sql, values);
+      conexao.release()
     }
   }
 
@@ -27,6 +29,7 @@ export default class CidadeBD {
       const sql = "DELETE FROM cidades WHERE codigo=?";
       const values = [cidade.codigo];
       await conect.query(sql, values);
+      conexao.release()
     }
   }
 
@@ -40,6 +43,7 @@ export default class CidadeBD {
       const cidade = new Cidade(row["codigo"], row["nome"]);
       listCidades.push(cidade);
     }
+    conexao.release()
     return listCidades;
   }
 }

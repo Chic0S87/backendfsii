@@ -18,7 +18,9 @@ export default class PessoaBD {
         pessoas.profissao1,
         pessoas.email      
       ];
+      
       await conect.query(sql, values);
+      conexao.release()
     }
   }
 
@@ -39,6 +41,7 @@ export default class PessoaBD {
         pessoas.cpf
       ];
       await conect.query(sql, values);
+      conexao.release()
     }
   }
   async excluir(pessoas) {
@@ -47,6 +50,7 @@ export default class PessoaBD {
       const sql = "DELETE FROM pessoas WHERE cpf=? ";
       const values = [pessoas.cpf];
       await conect.query(sql, values);
+      conexao.release()
     }
   }
   async consultar(term) {
@@ -72,6 +76,7 @@ export default class PessoaBD {
       );
       listPessoas.push(pessoas);
     }
+    conexao.release()
     return listPessoas;
   }
 }
