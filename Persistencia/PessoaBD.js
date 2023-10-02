@@ -1,10 +1,10 @@
 import Pessoas from "../Modelo/Pessoas.js";
-import Conect from "./Conexao.js";
+import conectar from "./Conexao.js";
 
 export default class PessoaBD {
   async gravar(pessoas) {
     if (pessoas instanceof Pessoas) {
-      const conect = await Conect();
+      const conect = await conectar();
       const sql =
         "INSERT INTO pessoas(cpf,nome,nascimento,endereco,cidade,telefone,tipo,profissao1,email) VALUES (?,?,?,?,?,?,?,?,?) ";
       const values = [
@@ -26,7 +26,7 @@ export default class PessoaBD {
 
   async atualizar(pessoas) {
     if (pessoas instanceof Pessoas) {
-      const conect = await Conect();
+      const conect = await conectar();
       const sql =
         "UPDATE pessoas SET nome=?,nascimento=?,endereco=?,cidade=?,telefone=?,tipo=?,profissao1=?,email=? WHERE cpf=?";
       const values = [
@@ -46,7 +46,7 @@ export default class PessoaBD {
   }
   async excluir(pessoas) {
     if (pessoas instanceof Pessoas) {
-      const conect = await Conect();
+      const conect = await conectar();
       const sql = "DELETE FROM pessoas WHERE cpf=? ";
       const values = [pessoas.cpf];
       await conect.query(sql, values);
@@ -54,7 +54,7 @@ export default class PessoaBD {
     }
   }
   async consultar(term) {
-    const conect = await Conect();
+    const conect = await conectar();
     const sql = "SELECT * FROM pessoas";
     const values = ["%" + term + "%"];
     const [rows] = await conect.query(sql, values);
