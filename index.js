@@ -4,6 +4,7 @@ import routerCidade from "./Router/RouterCidades.js";
 import rotaProduto from "./Router/rotaProduto.js";
 import rotaCategoriaProd from "./Router/rotaCategoriaProd.js";
 import cors from "cors";
+import rotaDoacao from "./Router/rotaDoacao.js";
 
 const porta=4016;
 const hostname = '0.0.0.0';
@@ -15,6 +16,7 @@ server.use("/pessoas", routerPessoa);
 server.use("/cidades", routerCidade);
 server.use("/produto", rotaProduto);
 server.use("/categoria", rotaCategoriaProd);
+server.use("/doacao", rotaDoacao);
 server.listen(porta,hostname, () => {
   console.log("Backend ouvindo em http://"+hostname+":"+porta);
 });

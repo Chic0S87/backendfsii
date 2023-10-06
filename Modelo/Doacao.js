@@ -1,3 +1,5 @@
+import DoacaoBD from "../Persistencia/DoacaoBD.js"
+
 export default class Doacao{
   #codigo
   #data
@@ -50,6 +52,24 @@ export default class Doacao{
     "pessoa":this.#pessoa,
     "produto":this.#produto
     }
+  }
+
+  async gravar(){
+    const doacaoBD = new DoacaoBD();
+    await doacaoBD.gravar(this);
+  }
+
+  async consultar(){
+    const doacaoBD = new DoacaoBD();
+    const doacao = await doacaoBD.consultar(this);
+    return doacao;
+  }
+
+  async consultarCodigo(codigo){
+    const doacaoBD = new DoacaoBD();
+    const doacao = await doacaoBD.consultarCodigo(codigo);
+    return doacao;
+    
   }
 
 
