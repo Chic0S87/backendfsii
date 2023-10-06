@@ -1,9 +1,9 @@
 import Doacao from "../Modelo/Doacao.js";
 import conectar from "./Conexao.js";
-import Pessoas from "./Pessoas.js";
 import ItemDoado from "../Modelo/ProdutoDoado.js";
 import Produto from "../Modelo/ProdutoPid.js";
 import CategoriaProd from "../Modelo/CategoriaProd.js";
+import Pessoas from "../Modelo/Pessoas.js";
 
 export default class DoacaoBD{
   async gravar(doacao){
