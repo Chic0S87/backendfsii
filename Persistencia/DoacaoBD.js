@@ -46,7 +46,7 @@ export default class DoacaoBD{
                                                   on pr.codigo = i.codigoProduto\
                                                   and c.codigo = pr.codigo\
                                                   WHERE i.codigoDoacao = ?"       
-    parametros=[doacao.codigo];
+    const parametros=[doacao.codigo];
     const [itensDoacao] = await conexao.query(sqlitens, parametros);
     let listaItens = [];  
     for(const item of itensDoacao){
