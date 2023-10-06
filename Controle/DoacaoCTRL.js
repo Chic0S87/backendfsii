@@ -1,7 +1,7 @@
 import Pessoas from "../Modelo/Pessoas.js";
-import Doacao from "../Modelo/Doacao";
-import Produto from "../Modelo/ProdutoPid";
-import ItemDoado from "../Modelo/ProdutoDoado";
+import Doacao from "../Modelo/Doacao.js";
+import Produto from "../Modelo/ProdutoPid.js";
+import ItemDoado from "../Modelo/ProdutoDoado.js";
 
 export default class DoacaoCTRL {
   gravar(requisicao, resposta) {
