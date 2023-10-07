@@ -1,6 +1,6 @@
 import Doacao from "../Modelo/Doacao.js";
 import Conect from "./Conexao.js";
-import Produto from "../Modelo/Produto.js";
+import Produto from "../Modelo/ProdutoPid.js";
 import CategoriaProd from "../Modelo/CategoriaProd.js";
 import Pessoas from "../Modelo/Pessoas.js";
 
