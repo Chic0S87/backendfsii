@@ -72,8 +72,4 @@ export default class Doacao{
     
   }
 
-
-
-
-
 }
