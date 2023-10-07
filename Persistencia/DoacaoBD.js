@@ -19,6 +19,7 @@ export default class DoacaoBD{
         const sql2 = "INSERT INTO doacao_produto(codigoProduto, codigoDoacao) VALUES (?,?)"
         const parametros = [item.codigoProduto, item.codigoDoacao];
         await conexao.query(sql2, parametros);
+        global.conexao.release()
       }
       }catch(e){
         await conexao.rollback();
