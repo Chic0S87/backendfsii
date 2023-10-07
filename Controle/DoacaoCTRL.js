@@ -59,8 +59,8 @@ export default class DoacaoCTRL {
             });
           });
       } else {
-        doacao.consultar().then((doacoes) => {
-          resposta.json(doacoes);
+        doacao.consultar().then((doacao) => {
+          resposta.json(doacao);
         });
       }
     } else {
