@@ -39,7 +39,7 @@ export default class DoacaoBD{
     const [doacoes] = await conexao.query(sql);
     for(const rows of doacoes){
         const pessoa = new Pessoas(rows["cpf"], rows["nome"], rows["nascimento"], rows["endereco"], rows["cidade"], rows["telefone"], rows["tipo"], rows["profissao1"], rows["email"]);
-        const doacao = new Doacao(rows["codigo"], rows["dataDoacao"], pessoa, rows["codigoProduto"],[]);
+        let doacao = new Doacao(rows["codigo"], rows["dataDoacao"], pessoa, rows["codigoProduto"],[]);
     
     const sqlitens = "SELECT * FROM produto as pr inner join doacao_produto as i\
                                                   inner join categoria_produto as c\
@@ -78,7 +78,7 @@ export default class DoacaoBD{
                                                   on pr.codigo = i.codigoProduto\
                                                   and c.codigo = pr.codigo\
                                                   WHERE i.codigoDoacao = ?"       
-    parametros=[doacao.codigo];
+    const parametros=[doacao.codigo];
     const [itensDoacao] = await conexao.query(sqlitens, parametros);
     let listaItens = [];  
     for(const item of itensDoacao){

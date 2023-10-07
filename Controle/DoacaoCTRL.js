@@ -43,8 +43,8 @@ export default class DoacaoCTRL {
   consultar(requisicao, resposta) {
     resposta.type("application/json");
     if (requisicao.method === "GET" && requisicao.is("application/json")) {
-      const codigo = requisicao.query.codigo;
-      const doacao = new Doacao();
+      const codigo = requisicao.params.codigo;
+      let doacao = new Doacao();
       if (codigo) {
         doacao
           .consultarCodigo(codigo)
