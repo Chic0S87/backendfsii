@@ -82,7 +82,7 @@ export default class DoacaoBD{
 
                 for (const item of itensDoacao) {
                     const categoria = new CategoriaProd(item["codigoCategoria"], item["categoria"]);
-                    const produto = new Produto(item["codigo_produto"], item["nome"], item["metrica"], item["descricao"], categoria.codigo, categoria.categoria);
+                    const produto = new Produto(item["codigo"], item["nome"], item["metrica"], item["descricao"], categoria.codigo, categoria.categoria);
 
                     listaItens.push({ produto, quantidade: item["quantidade"] });
                 }
