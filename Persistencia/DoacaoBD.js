@@ -73,7 +73,7 @@ export default class DoacaoBD{
 
                 const sqlitens = "SELECT pr.*, dp.*, cp.codigo AS codigoCategoria, cp.categoria FROM doacao_produto as dp \
                           INNER JOIN produto as pr ON dp.codigoProduto = pr.codigo \
-                          INNER JOIN categoriaproduto as cp ON pr.categoria = cp.codigo \
+                          INNER JOIN categoria_produto as cp ON pr.categoria = cp.codigo \
                           WHERE dp.codigoDoacao = ?";
 
                 const parametros = [doacao.codigo];
