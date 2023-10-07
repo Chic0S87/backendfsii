@@ -34,8 +34,8 @@ export default class DoacaoBD{
             const conexao = await Conect();
             try {
                 await conexao.beginTransaction();
-                const sql = "INSERT INTO doacao(dataDoacao, cpfPessoa) VALUES (?,?)";
-                const valores = [doacao.dataDoacao, doacao.cpfPessoa];
+                const sql = "INSERT INTO doacao(cpfPessoa, dataDoacao) VALUES (?,?)";
+                const valores = [doacao.cpfPessoa ,doacao.dataDoacao];
                 const resultado = await conexao.query(sql, valores);
                 doacao.codigo = resultado[0].insertId;
 

@@ -1,16 +1,16 @@
 import DoacaoBD from "../Persistencia/DoacaoBD.js";
 
 export default class Doacao {
-    #codigo;
-    #cpfPessoa;    
+    #codigo;        
     #dataDoacao;
+    #cpfPessoa;
     #listaItens;
     #quantidade;
 
-    constructor(codigo, cpfPessoa, dataDoacao, listaItens) {
+    constructor(codigo, dataDoacao, cpfPessoa, listaItens) {
         this.#codigo = codigo;
-        this.#cpfPessoa = cpfPessoa;
         this.#dataDoacao = dataDoacao;
+        this.#cpfPessoa = cpfPessoa;
         this.#listaItens = listaItens;
     }
 
@@ -57,8 +57,8 @@ export default class Doacao {
     toJSON() {
         return {
             "codigo": this.#codigo,
-            "cpfPessoa": this.#cpfPessoa,
             "dataDoacao": this.#dataDoacao,
+            "cpfPessoa": this.#cpfPessoa,
             "listaItens": this.#listaItens.map(item => ({
                 "produto": item.produto,
                 "quantidade": item.quantidade

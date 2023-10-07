@@ -30,14 +30,14 @@ export default class DoacaoCTRL {
         resposta.type('application/json');
         if (requisicao.method === 'POST' && requisicao.is('application/json')) {
             
-            const dados = requisicao.body;
-            const cpfPessoa = dados.cpfPessoa;
+            const dados = requisicao.body;            
             const dataDoacao = dados.dataDoacao;
+            const cpfPessoa = dados.cpfPessoa;
             const listaItens = dados.listaItens;
 
-            if (cpfPessoa && dataDoacao && listaItens) {
+            if (dataDoacao && cpfPessoa && listaItens) {
 
-                const doacao = new Doacao(0, cpfPessoa, dataDoacao, listaItens);
+                const doacao = new Doacao(0, dataDoacao, cpfPessoa, listaItens);
 
                 doacao.gravar().then(() => {
                     resposta.status(200).json({
