@@ -1,5 +1,5 @@
 import Doacao from "../Modelo/Doacao.js";
-import conectar from "./Conexao.js";
+import Conect from "./Conexao.js";
 import ItemDoado from "../Modelo/ProdutoDoado.js";
 import Produto from "../Modelo/ProdutoPid.js";
 import CategoriaProd from "../Modelo/CategoriaProd.js";
@@ -8,7 +8,7 @@ import Pessoas from "../Modelo/Pessoas.js";
 export default class DoacaoBD{
   async gravar(doacao){
     if (doacao instanceof Doacao){
-      const conexao = await conectar();
+      const conexao = await Conect();
       try{
       
       await conexao.beginTransaction();
@@ -32,7 +32,7 @@ export default class DoacaoBD{
 
   async consultar(){
     let listaDoacoes = [];
-    const conexao = await conectar();
+    const conexao = await Conect();
     const sql = "SELECT * FROM doacao as d inner join pessoas as p \
                                 on p.cpf = d.cpfPessoa\
                                 order by d.dataDoacao"
@@ -62,7 +62,7 @@ export default class DoacaoBD{
 
   async consultarCodigo(codigo){
     let listaDoacoes = [];
-    const conexao = await conectar();
+    const conexao = await Conect();
     const sql = "SELECT * FROM doacao as d inner join pessoas as p \
                                 on p.cpf = d.cpfPessoa\
                                 WHERE d.codigo = ?\
