@@ -38,8 +38,8 @@ export default class DoacaoBD{
                                 order by d.dataDoacao"
     const [doacoes] = await conexao.query(sql);
     for(const rows of doacoes){
-        const pessoa = new Pessoas(rows[0]["cpf"], rows[0]["nome"], rows[0]["nascimento"], rows[0]["endereco"], rows[0]["cidade"], rows[0]["telefone"], rows[0]["tipo"], rows[0]["profissao1"], rows[0]["email"]);
-        const doacao = new Doacao(rows[0]["codigo"], rows[0]["dataDoacao"], pessoa, rows[0]["codigoProduto"],[]);
+        const pessoa = new Pessoas(rows["cpf"], rows["nome"], rows["nascimento"], rows["endereco"], rows["cidade"], rows["telefone"], rows["tipo"], rows["profissao1"], rows["email"]);
+        const doacao = new Doacao(rows["codigo"], rows["dataDoacao"], pessoa, rows["codigoProduto"],[]);
     
     const sqlitens = "SELECT * FROM produto as pr inner join doacao_produto as i\
                                                   inner join categoria_produto as c\
@@ -70,8 +70,8 @@ export default class DoacaoBD{
     const parametros = [codigo];
     const [doacoes] = await conexao.query(sql, parametros);
     for(const rows of doacoes){
-        const pessoa = new Pessoas(rows[0]["cpf"], rows[0]["nome"], rows[0]["nascimento"], rows[0]["endereco"], rows[0]["cidade"], rows[0]["telefone"], rows[0]["tipo"], rows[0]["profissao1"], rows[0]["email"]);
-        const doacao = new Doacao(rows[0]["codigo"], rows[0]["dataDoacao"], pessoa, rows[0]["codigoProduto"],[]);
+        const pessoa = new Pessoas(rows["cpf"], rows["nome"], rows["nascimento"], rows["endereco"], rows["cidade"], rows["telefone"], rows["tipo"], rows["profissao1"], rows["email"]);
+        const doacao = new Doacao(rows["codigo"], rows["dataDoacao"], pessoa, rows["codigoProduto"],[]);
     
     const sqlitens = "SELECT * FROM produto as pr inner join doacao_produto as i\
                                                   inner join categoria_produto as c\
