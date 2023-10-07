@@ -13,7 +13,7 @@ export default class DoacaoCTRL {
       const itens = dados.itens;
       let listaItens = [];
       for (const item of itens) {
-        const produto = new Produto(item.produto.codigo);
+        const produto = new Produto(item.codigo);
         const itemDoado = new ItemDoado(produto, item.produto);
         listaItens.push(itemDoado);
       }

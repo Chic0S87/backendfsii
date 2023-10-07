@@ -9,8 +9,7 @@ export default class DoacaoBD{
   async gravar(doacao){
     if (doacao instanceof Doacao){
       const conexao = await Conect();
-      try{
-      
+      try{      
       await conexao.beginTransaction();
       const sql = "INSERT INTO doacao(dataDoacao, cpfPessoa) VALUES(?,?)"
       const valores = [doacao.data, doacao.pessoa.cpf];
@@ -18,7 +17,7 @@ export default class DoacaoBD{
       doacao.codigo = resultado[0].insertId;
       for(const item of doacao.produto){
         const sql2 = "INSERT INTO doacao_produto(codigoProduto, codigoDoacao) VALUES (?,?)"
-        const parametros = [item.produto.codigo, item.doacao.codigo];
+        const parametros = [item.codigoProduto, item.codigoDoacao];
         await conexao.query(sql2, parametros);
       }
       }catch(e){
