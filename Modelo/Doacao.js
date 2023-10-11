@@ -12,6 +12,7 @@ export default class Doacao {
         this.#dataDoacao = dataDoacao;
         this.#cpfPessoa = cpfPessoa;
         this.#listaItens = listaItens;
+        
     }
 
     get codigo() {

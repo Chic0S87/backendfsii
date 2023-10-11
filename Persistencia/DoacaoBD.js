@@ -11,21 +11,21 @@ export default class DoacaoBD{
       try{      
       await conexao.beginTransaction();
       const sql = "INSERT INTO doacao(dataDoacao, cpfPessoa) VALUES(?,?)"
-      const valores = [doacao.data, doacao.pessoa.cpf];
+      const valores = [doacao.dataDoacao, doacao.cpfPessoa];
       const resultado = await conexao.query(sql, valores);
       doacao.codigo = resultado[0].insertId;
-      for(const item of doacao.produto){
-        const sql2 = "INSERT INTO doacao_produto(codigoProduto, codigoDoacao) VALUES (?,?)"
-        const parametros = [item.codigoProduto, item.codigoDoacao];
+      for(const item of doacao.listaItens){
+        const sql2 = "INSERT INTO doacao_produto(codigoProduto, codigoDoacao, quantidade ) VALUES (?,?,?)"
+        const parametros = [item.codigoProduto, doacao.codigo, item.quantidade];
         await conexao.query(sql2, parametros);
-        global.conexao.release()
+        
       }
       }catch(e){
         await conexao.rollback();
         throw e;
       }
       await conexao.commit();
-      global.conexao.release()
+      conexao.release()
     }
   }
 
